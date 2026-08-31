@@ -22,14 +22,18 @@
 <body>
 <a class="skip-link" href="#main">Preskoči na sadržaj</a>
 
+<!-- Bočne šine: vertikalni tekst uz ivice prozora, vidljive tek na širokim ekranima -->
+<span class="edge-rail edge-rail--left" aria-hidden="true">Prodaja · Servis · Otkup</span>
+<a class="edge-rail edge-rail--right" href="tel:+381656399557" tabindex="-1" aria-hidden="true">065/6399-557 · Loznica</a>
+
 <header class="site-header">
   <div class="wrap header__inner">
     <a class="brand" href="index.html" aria-label="XL Mobil, početna">
       <svg width="30" height="30" viewBox="0 0 32 32" aria-hidden="true" focusable="false">
-        <rect width="32" height="32" rx="8" fill="#0b1b33"/>
-        <rect x="10" y="5" width="12" height="22" rx="3" fill="#122a4d" stroke="#2563eb" stroke-width="1.5"/>
+        <rect width="32" height="32" rx="8" fill="#16325e"/>
+        <rect x="10" y="5" width="12" height="22" rx="3" fill="#0b1b33" stroke="#60a5fa" stroke-width="1.5"/>
         <rect x="13.5" y="7.5" width="5" height="1.6" rx="0.8" fill="#60a5fa"/>
-        <g fill="#2563eb">
+        <g fill="#ef4444">
           <rect x="12" y="18" width="2.2" height="4" rx="0.6"/>
           <rect x="15" y="16" width="2.2" height="6" rx="0.6"/>
           <rect x="18" y="13.5" width="2.2" height="8.5" rx="0.6"/>
@@ -46,7 +50,6 @@
       <ul>
         <li><a href="index.html" aria-current="page">Početak</a></li>
         <li><a href="ponuda.html">Ponuda</a></li>
-        <li><a href="ponuda.html#usluge">Usluge</a></li>
         <li><a href="o-nama.html">O nama</a></li>
         <li><a href="kontakt.html">Kontakt</a></li>
         <li class="mobile-call"><a class="btn btn--primary btn--block" href="tel:+381656399557">Pozovi 065/6399-557</a></li>
@@ -64,9 +67,10 @@
 
   <!-- ================= HERO ================= -->
   <section class="hero">
+    <span class="hero__aurora" aria-hidden="true"></span>
     <div class="wrap hero__grid">
       <div class="hero__copy">
-        <h1 class="hero__title reveal-hero">Telefon vam radi čudno ili je vreme za nov? Rešićemo to danas.</h1>
+        <h1 class="hero__title reveal-hero">Telefon vam radi čudno ili je vreme za nov? <span class="grad">Rešićemo to danas.</span></h1>
         <p class="hero__lead reveal-hero">XL Mobil je komšijski servis i prodavnica telefona u centru Loznice. Popravke ekrana i baterije istog dana, pošten otkup starog telefona i iskren savet — i kad taj savet znači „ne isplati se popravljati".</p>
         <div class="hero__actions reveal-hero">
           <a class="btn btn--primary" href="ponuda.html">Pogledaj ponudu</a>
@@ -74,43 +78,29 @@
         </div>
         <dl class="trust-row reveal-hero">
           <div><dt>15+</dt><dd>godina u Loznici</dd></div>
-          <div><dt>8+</dt><dd>brendova na servisu</dd></div>
+          <div><dt>10+</dt><dd>brendova na servisu</dd></div>
           <div><dt>Istog dana</dt><dd>ekran i baterija</dd></div>
           <div><dt>6 meseci</dt><dd>garancija na delove</dd></div>
         </dl>
       </div>
 
-      <!-- Signature element: hand-drawn SVG telefon u mekom plavom sjaju + 3 glass-morphism čipa koji se jednom podignu pri učitavanju -->
-      <div class="hero__device reveal-hero" aria-hidden="true">
-        <span class="hero__glow"></span>
-        <svg class="hero__phone" viewBox="0 0 300 560" role="img" aria-label="Ilustracija telefona">
-          <rect x="8" y="8" width="284" height="544" rx="46" fill="#122a4d" stroke="#2563eb" stroke-width="2"/>
-          <rect x="20" y="20" width="260" height="520" rx="36" fill="#0b1b33"/>
-          <rect x="116" y="34" width="68" height="14" rx="7" fill="#1c3255"/>
-          <!-- abstract screen UI -->
-          <rect x="40" y="70" width="220" height="120" rx="18" fill="#15294a"/>
-          <g fill="#38bdf8">
-            <rect x="150" y="150" width="12" height="22" rx="3"/>
-            <rect x="168" y="138" width="12" height="34" rx="3"/>
-            <rect x="186" y="124" width="12" height="48" rx="3"/>
-            <rect x="204" y="108" width="12" height="64" rx="3"/>
-          </g>
-          <text x="56" y="112" font-family="JetBrains Mono, monospace" font-size="13" fill="#60a5fa">SIGNAL</text>
-          <text x="56" y="134" font-family="Sora, sans-serif" font-weight="700" font-size="20" fill="#ffffff">Puna 4/4</text>
-          <rect x="40" y="210" width="104" height="104" rx="16" fill="#15294a"/>
-          <rect x="156" y="210" width="104" height="104" rx="16" fill="#15294a"/>
-          <rect x="40" y="330" width="104" height="104" rx="16" fill="#15294a"/>
-          <rect x="156" y="330" width="104" height="104" rx="16" fill="#1d4ed8"/>
-          <circle cx="60" cy="230" r="7" fill="#2563eb"/>
-          <circle cx="176" cy="230" r="7" fill="#2563eb"/>
-          <circle cx="60" cy="350" r="7" fill="#2563eb"/>
-          <circle cx="176" cy="350" r="7" fill="#60a5fa"/>
-          <rect x="40" y="454" width="220" height="66" rx="18" fill="#2563eb"/>
-          <text x="150" y="493" text-anchor="middle" font-family="Sora, sans-serif" font-weight="700" font-size="17" fill="#ffffff">Zakaži servis</text>
-        </svg>
-        <span class="chip chip--1">Servis istog dana</span>
-        <span class="chip chip--2">Garancija 6 meseci</span>
-        <span class="chip chip--3"><span class="chip__dot"></span> Polovni u ponudi</span>
+      <!-- ===================================================================
+           MESTO ZA FOTOGRAFIJU
+           Trenutno je postavljena: assets/SlikaRadnje.jpeg
+           Preporuka: portret 4:5, oko 1200x1500px, do ~400KB.
+           Dok fajl ne postoji, prikazuje se okvir sa uputstvom.
+           =================================================================== -->
+      <div class="hero__media reveal-hero">
+        <span class="hero__glow" aria-hidden="true"></span>
+        <figure class="photo-frame">
+          <img src="assets/SlikaRadnje.jpeg" alt="Ulaz u radnju XL Mobil u Loznici, izlog sa telefonima i opremom"
+               onerror="this.closest('.photo-frame').classList.add('is-empty'); this.remove();">
+          <figcaption class="photo-frame__hint" aria-hidden="true">
+            <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="3"/><circle cx="8.5" cy="10" r="1.6"/><path d="M21 15.5l-4.5-4.5L9 18.5"/></svg>
+            <strong>Mesto za fotografiju</strong>
+            <span>Sačuvajte sliku kao <code>assets/SlikaRadnje.jpeg</code></span>
+          </figcaption>
+        </figure>
       </div>
     </div>
   </section>
@@ -124,7 +114,7 @@
         <p>Od prodaje i otkupa do popravke i sitnica koje se stalno gube — punjača, folija, kablova.</p>
       </div>
 
-      <div class="grid-cards grid-cards--4">
+      <div class="grid-cards grid-cards--3">
         <a class="chip-card reveal" href="ponuda.html#prodaja">
           <span class="signal" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
           <span class="chip-card__num">01</span>
@@ -155,23 +145,11 @@
           <h3>Oprema i dodaci</h3>
           <p>Maske, folije, kaljena stakla, punjači, kablovi, slušalice.</p>
         </a>
-        <a class="chip-card reveal" href="ponuda.html#uredjaji">
-          <span class="signal" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
-          <span class="chip-card__num">06</span>
-          <h3>Tableti, satovi, slušalice</h3>
-          <p>Prodaja i servis tableta, pametnih satova i bežičnih slušalica.</p>
-        </a>
         <a class="chip-card reveal" href="ponuda.html#softver">
           <span class="signal" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
-          <span class="chip-card__num">07</span>
+          <span class="chip-card__num">06</span>
           <h3>Softverska podrška</h3>
           <p>Prebacivanje podataka, otključavanje mreže, ažuriranje sistema.</p>
-        </a>
-        <a class="chip-card reveal" href="ponuda.html#dopuna">
-          <span class="signal" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
-          <span class="chip-card__num">08</span>
-          <h3>Dopuna i računi</h3>
-          <p>Dopuna kredita za sve mreže i plaćanje računa na licu mesta.</p>
         </a>
       </div>
     </div>
@@ -189,8 +167,8 @@
           <div class="reason__ic" aria-hidden="true">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
           </div>
-          <h3>Popravka dok čekate</h3>
-          <p>Zamena ekrana ili baterije za najčešće modele gotova je za 30–60 minuta. Za retke delove kažemo tačan rok pri prijemu, ne „javićemo se".</p>
+          <h3>Gotovo istog ili narednog dana</h3>
+          <p>Ako je deo na stanju, telefon popravljamo istog dana. Ako moramo da ga poručimo, uređaj je gotov već narednog dana — rok vam kažemo odmah pri prijemu, ne „javićemo se".</p>
         </div>
         <div class="reason reveal">
           <div class="reason__ic" aria-hidden="true">
@@ -325,7 +303,7 @@
       <div class="footer__list">
         <a href="index.html">Početak</a>
         <a href="ponuda.html">Ponuda</a>
-        <a href="ponuda.html#usluge">Usluge</a>
+        
         <a href="o-nama.html">O nama</a>
         <a href="kontakt.html">Kontakt</a>
       </div>
@@ -336,8 +314,8 @@
         <a href="tel:+381656399557">Mobilni: 065/6399-557</a>
         <a href="tel:+381158899957">Fiksni: 015/889-957</a>
         <!-- NAPOMENA ZA VLASNIKA: radno vreme nije zvanično potvrđeno — proveriti i ispraviti pre objave sajta -->
-        <span>Pon–Pet: 09–20h</span>
-        <span>Subota: 09–15h</span>
+        <span>Pon–Pet: 09–17h</span>
+        <span>Subota: 10–15h</span>
         <span>Nedelja: ne radimo</span>
       </div>
     </div>

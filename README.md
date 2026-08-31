@@ -25,19 +25,18 @@ npx serve .
 
 | Fajl | Sadržaj |
 |------|---------|
-| `index.html` | Početna: hero sa SVG telefonom, mreža ponude (8 „signal chip" kartica), zašto mi, proces servisa, brendovi, utisci |
+| `index.html` | Početna: hero sa fotografijom radnje, mreža ponude (6 „signal chip" kartica), zašto mi, proces servisa, brendovi, utisci |
 | `ponuda.html` | Detaljna ponuda i usluge, cenovnik servisa (okvirno), „kako ide servis" u 4 koraka, vodič za procenu stanja pri otkupu |
 | `o-nama.html` | O radnji, čemu dajemo prednost, utisci |
 | `kontakt.html` | Radno vreme, Google Maps embed, kontakt formular sa JS validacijom |
 | `styles.css` | Zajednički stil za sve stranice |
 | `main.js` | Sticky header, mobilni meni, scroll reveal, hero animacija, validacija formulara |
-| `assets/` | `favicon.svg`, `og-image.svg` |
+| `assets/` | `favicon.svg`, `og-image.svg`, `SlikaRadnje.jpeg` (glavna fotografija na početnoj — vidi ispod) |
 
 ## Napomene za vlasnika pre objave
 
-- **Radno vreme** nije zvanično potvrđeno. Trenutno je unet razuman placeholder
-  (Pon–Pet 09–20h, Subota 09–15h, Nedelja ne radi). Označeno je HTML komentarom
-  u `kontakt.html` i u footeru svake stranice — proveriti i ispraviti.
+- **Radno vreme** uneto po dogovoru sa vlasnikom: Pon–Pet 09–17h, subota 10–15h,
+  nedeljom ne radimo. Menja se u footeru svake stranice i u tabeli u `kontakt.html`.
 - **Cene servisa** u `ponuda.html` su okvirne; uskladiti sa aktuelnim cenovnikom.
 - Kontakt formular ne šalje podatke serveru — prikazuje samo lokalno „uspešno"
   stanje. Za produkciju povezati sa backendom ili servisom za slanje mejlova.
@@ -46,8 +45,19 @@ npx serve .
 
 ## Fotografije
 
-Sve fotografije su sa Unsplash-a (besplatne za korišćenje), sa autorstvom
-navedenim u HTML komentaru iznad svake `<img>`. Korišćene su 3 fotografije.
+### Glavna fotografija na početnoj strani
+
+Hero sekcija na `index.html` ima rezervisano mesto za vašu fotografiju. Da biste je
+ubacili, dovoljno je da sliku sačuvate kao **`assets/SlikaRadnje.jpeg`** — ništa se ne menja
+u kodu. Preporuka: portretna orijentacija oko **4:5** (npr. 1200×1500 px), do ~400 KB.
+
+Dok taj fajl ne postoji, na tom mestu se prikazuje isprekidani okvir sa uputstvom,
+pa se odmah vidi gde slika ide. Ako želite drugo ime ili format (npr. `.webp`),
+promenite `src` i `alt` u bloku označenom komentarom `MESTO ZA FOTOGRAFIJU` u
+`index.html`.
+
+Ostale fotografije su sa Unsplash-a (besplatne za korišćenje), sa autorstvom
+navedenim u HTML komentaru iznad svake `<img>`.
 
 ## Pristupačnost
 

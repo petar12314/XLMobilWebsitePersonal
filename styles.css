@@ -742,3 +742,663 @@ form.contact-form {
   .reveal, .reveal-hero { opacity: 1 !important; transform: none !important; }
   .chip { opacity: 1 !important; transform: none !important; }
 }
+
+/* ==========================================================================
+   VISUAL UPGRADE LAYER
+   Dodato kasnije: bogatija tipografija, gradijenti, dubina i mikro-animacije.
+   Namerno na kraju fajla — pravila ovde nadjačavaju osnovni sloj iznad.
+   ========================================================================== */
+
+:root {
+  --grad-blue: linear-gradient(135deg, #2563eb 0%, #38bdf8 100%);
+  --grad-navy: linear-gradient(160deg, #0b1b33 0%, #12305c 55%, #0b1b33 100%);
+  --shadow-md: 0 10px 30px -8px rgba(11, 27, 51, .16), 0 2px 8px rgba(11, 27, 51, .06);
+  --shadow-lg: 0 40px 80px -24px rgba(11, 27, 51, .30);
+  --shadow-blue: 0 14px 30px -10px rgba(37, 99, 235, .55);
+}
+
+body { font-size: 1.05rem; letter-spacing: -0.005em; }
+h1, h2 { letter-spacing: -0.032em; }
+h2 { font-weight: 800; }
+
+/* Gradijentni akcenat u naslovu */
+.grad {
+  background: var(--grad-blue);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* --- Eyebrow kao pill oznaka -------------------------------------------- */
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: .5rem;
+  padding: .34rem .85rem .34rem .7rem;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: var(--white);
+  box-shadow: var(--shadow-sm);
+}
+.eyebrow::before {
+  content: "";
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: var(--grad-blue);
+}
+.section--navy .eyebrow,
+.page-hero .eyebrow {
+  background: rgba(255, 255, 255, .06);
+  border-color: rgba(255, 255, 255, .16);
+  box-shadow: none;
+}
+
+.section__head { margin-bottom: 3rem; }
+.section__head h2 { margin-bottom: .55rem; }
+
+/* --- Dugmad -------------------------------------------------------------- */
+.btn { padding: .88rem 1.6rem; font-size: 1rem; }
+.btn--primary {
+  position: relative;
+  overflow: hidden;
+  background: var(--grad-blue);
+  box-shadow: var(--shadow-blue);
+}
+.btn--primary::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(120deg, transparent 30%, rgba(255,255,255,.35) 50%, transparent 70%);
+  transform: translateX(-120%);
+  transition: transform 700ms var(--ease);
+}
+.btn--primary:hover {
+  background: var(--grad-blue);
+  transform: translateY(-3px);
+  box-shadow: 0 20px 38px -12px rgba(37, 99, 235, .65);
+}
+.btn--primary:hover::after { transform: translateX(120%); }
+.btn--ghost { background: rgba(255, 255, 255, .7); backdrop-filter: blur(6px); border-color: #d7e0f2; }
+.btn--ghost:hover { border-color: var(--blue); background: var(--white); box-shadow: var(--shadow-sm); }
+
+/* --- Header -------------------------------------------------------------- */
+.site-header {
+  background: rgba(255, 255, 255, .7);
+  backdrop-filter: saturate(160%) blur(10px);
+  -webkit-backdrop-filter: saturate(160%) blur(10px);
+}
+.site-header.is-scrolled {
+  background: rgba(255, 255, 255, .86);
+  box-shadow: 0 1px 0 rgba(11, 27, 51, .06), 0 12px 30px -18px rgba(11, 27, 51, .35);
+}
+.header__inner { min-height: 76px; }
+.primary-nav a[aria-current="page"] {
+  background: linear-gradient(180deg, rgba(37, 99, 235, .06), rgba(37, 99, 235, .12));
+  box-shadow: inset 0 -2px 0 var(--blue);
+}
+
+/* --- Hero ---------------------------------------------------------------- */
+.hero {
+  padding-block: clamp(3rem, 8vw, 6.5rem) clamp(3.5rem, 9vw, 7rem);
+  background:
+    radial-gradient(70rem 40rem at 78% -10%, rgba(56, 189, 248, .16), transparent 60%),
+    radial-gradient(55rem 34rem at 6% 8%, rgba(37, 99, 235, .12), transparent 62%),
+    linear-gradient(180deg, #ffffff 0%, var(--bg) 100%);
+}
+/* Suptilna mreža preko pozadine — „tech" tekstura bez šuma */
+.hero__aurora {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background-image:
+    linear-gradient(rgba(11, 27, 51, .045) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(11, 27, 51, .045) 1px, transparent 1px);
+  background-size: 64px 64px;
+  -webkit-mask-image: radial-gradient(70% 60% at 50% 30%, #000 0%, transparent 78%);
+  mask-image: radial-gradient(70% 60% at 50% 30%, #000 0%, transparent 78%);
+}
+.hero__grid { position: relative; z-index: 1; }
+@media (min-width: 900px) { .hero__grid { grid-template-columns: 1.02fr .98fr; } }
+.hero__title { font-size: clamp(2.3rem, 5.6vw, 3.9rem); }
+.hero__lead { font-size: 1.18rem; line-height: 1.6; }
+
+/* Statistike kao male kartice */
+.trust-row { max-width: none; gap: .8rem; grid-template-columns: repeat(2, 1fr); }
+@media (min-width: 560px) { .trust-row { grid-template-columns: repeat(4, 1fr); } }
+.trust-row > div {
+  padding: .95rem 1rem;
+  background: rgba(255, 255, 255, .75);
+  border: 1px solid var(--line);
+  border-radius: var(--r-sm);
+  backdrop-filter: blur(6px);
+  box-shadow: var(--shadow-sm);
+  transition: transform var(--dur) var(--ease), box-shadow var(--dur) var(--ease);
+}
+.trust-row > div:hover { transform: translateY(-3px); box-shadow: var(--shadow-md); }
+.trust-row dt {
+  font-size: 1.42rem;
+  background: var(--grad-blue);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* --- MESTO ZA FOTOGRAFIJU ------------------------------------------------
+   Slika se učitava sa assets/foto.jpg. Ako fajl ne postoji, inline onerror
+   u index.html dodaje klasu .is-empty i prikazuje se okvir sa uputstvom.
+   ------------------------------------------------------------------------ */
+.hero__media {
+  position: relative;
+  justify-self: center;
+  width: min(420px, 84vw);
+  aspect-ratio: 4 / 5;
+}
+.hero__glow {
+  position: absolute;
+  inset: -18% -22%;
+  background: radial-gradient(circle at 50% 45%, rgba(56, 189, 248, .40), rgba(37, 99, 235, .18) 45%, transparent 70%);
+  filter: blur(10px);
+  z-index: 0;
+}
+.photo-frame {
+  position: relative;
+  z-index: 1;
+  margin: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: var(--r-lg);
+  overflow: hidden;
+  background: var(--white);
+  box-shadow: var(--shadow-lg), 0 0 0 1px rgba(11, 27, 51, .07);
+  transform: rotate(-1.2deg);
+  transition: transform var(--dur) var(--ease), box-shadow var(--dur) var(--ease);
+}
+.photo-frame:hover { transform: rotate(0deg) translateY(-4px); }
+.photo-frame img { width: 100%; height: 100%; object-fit: cover; }
+.photo-frame::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, .55);
+  background: linear-gradient(180deg, rgba(255, 255, 255, .14), transparent 30%, rgba(11, 27, 51, .10));
+}
+.photo-frame__hint { display: none; }
+.photo-frame.is-empty {
+  background:
+    repeating-linear-gradient(135deg, rgba(37, 99, 235, .035) 0 12px, transparent 12px 24px),
+    linear-gradient(160deg, #f2f6ff, #e8f0ff);
+  box-shadow: var(--shadow-md);
+}
+.photo-frame.is-empty::after { display: none; }
+.photo-frame.is-empty .photo-frame__hint {
+  display: grid;
+  place-items: center;
+  align-content: center;
+  gap: .45rem;
+  height: 100%;
+  padding: 1.5rem;
+  text-align: center;
+  color: var(--blue-dark);
+  border: 2px dashed rgba(37, 99, 235, .35);
+  border-radius: inherit;
+}
+.photo-frame__hint strong { font-family: var(--font-display); font-size: 1.02rem; color: var(--navy); }
+.photo-frame__hint span { font-size: .86rem; color: var(--slate); }
+.photo-frame__hint code {
+  font-family: var(--font-mono);
+  font-size: .82rem;
+  background: rgba(37, 99, 235, .10);
+  padding: .12rem .4rem;
+  border-radius: 6px;
+  color: var(--blue-dark);
+}
+.hero-in .hero__media { animation: heroIn var(--dur) var(--ease) .18s forwards; }
+
+.chip {
+  background: rgba(255, 255, 255, .82);
+  box-shadow: 0 12px 28px -12px rgba(11, 27, 51, .45);
+  font-size: .84rem;
+  padding: .58rem .95rem;
+}
+.chip--1 { top: 6%; left: -10%; }
+.chip--2 { top: 46%; right: -12%; }
+.chip--3 { bottom: 7%; left: -8%; }
+@media (max-width: 520px) {
+  .chip--1 { left: -3%; }
+  .chip--2 { right: -3%; }
+  .chip--3 { left: -1%; }
+}
+
+/* --- Kartice ponude ------------------------------------------------------ */
+.section--tint { background: linear-gradient(180deg, var(--bg) 0%, #eef3ff 100%); }
+
+.chip-card {
+  padding: 1.7rem 1.5rem 1.8rem;
+  border: 1px solid rgba(11, 27, 51, .06);
+  background: linear-gradient(180deg, #ffffff 0%, #fbfcff 100%);
+  transition: transform var(--dur) var(--ease), box-shadow var(--dur) var(--ease), border-color var(--dur) var(--ease);
+}
+.chip-card::after { height: 4px; background: var(--grad-blue); }
+.chip-card:hover, .chip-card:focus-visible {
+  transform: translateY(-6px);
+  border-color: rgba(37, 99, 235, .28);
+  box-shadow: 0 26px 50px -22px rgba(11, 27, 51, .40);
+}
+.chip-card__num { font-size: 1.05rem; color: rgba(37, 99, 235, .32); order: -1; }
+.chip-card h3 { font-size: 1.12rem; }
+.chip-card p { line-height: 1.55; }
+
+/* --- Zašto mi ------------------------------------------------------------ */
+.reason {
+  padding: 1.8rem 1.7rem;
+  border: 1px solid rgba(11, 27, 51, .06);
+  transition: transform var(--dur) var(--ease), box-shadow var(--dur) var(--ease);
+}
+.reason:hover { transform: translateY(-4px); box-shadow: var(--shadow-md); }
+.reason__ic {
+  width: 46px; height: 46px;
+  border-radius: 14px;
+  background: var(--grad-blue);
+  color: var(--white);
+  box-shadow: var(--shadow-blue);
+  margin-bottom: 1rem;
+}
+
+/* --- Koraci servisa ------------------------------------------------------ */
+.steps { gap: 1.2rem; }
+.step {
+  padding: 1.8rem 1.4rem 1.6rem;
+  border: 1px solid rgba(11, 27, 51, .06);
+  overflow: hidden;
+  transition: transform var(--dur) var(--ease), box-shadow var(--dur) var(--ease);
+}
+.step:hover { transform: translateY(-4px); box-shadow: var(--shadow-md); }
+.step::after {
+  content: "";
+  position: absolute;
+  right: -12px; bottom: -20px;
+  width: 78px; height: 78px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(56, 189, 248, .18), transparent 70%);
+}
+.step::before {
+  width: 38px; height: 38px;
+  border-radius: 12px;
+  background: var(--grad-blue);
+  box-shadow: var(--shadow-blue);
+}
+
+/* --- Brendovi ------------------------------------------------------------ */
+.section--navy { background: var(--grad-navy); position: relative; overflow: hidden; }
+.section--navy::before {
+  content: "";
+  position: absolute;
+  inset: auto -10% -60% -10%;
+  height: 60%;
+  pointer-events: none;
+  background: radial-gradient(60% 100% at 50% 0%, rgba(56, 189, 248, .22), transparent 70%);
+}
+.section--navy .wrap { position: relative; z-index: 1; }
+.brands { gap: .7rem; }
+.section--navy .brands li {
+  padding: .62rem 1.15rem;
+  font-size: .88rem;
+  background: rgba(255, 255, 255, .06);
+  border-color: rgba(255, 255, 255, .14);
+  transition: background var(--dur) var(--ease), border-color var(--dur) var(--ease), transform var(--dur) var(--ease), color var(--dur) var(--ease);
+}
+.section--navy .brands li:hover {
+  background: rgba(56, 189, 248, .16);
+  border-color: rgba(56, 189, 248, .45);
+  color: var(--white);
+  transform: translateY(-2px);
+}
+
+/* --- Utisci -------------------------------------------------------------- */
+.quote {
+  position: relative;
+  padding: 2rem 1.8rem 1.8rem;
+  border: 1px solid rgba(11, 27, 51, .06);
+  transition: transform var(--dur) var(--ease), box-shadow var(--dur) var(--ease);
+}
+.quote:hover { transform: translateY(-4px); box-shadow: var(--shadow-md); }
+.quote::before {
+  content: "\201C";
+  position: absolute;
+  top: -.4rem; right: 1.2rem;
+  font-family: var(--font-display);
+  font-size: 5rem;
+  line-height: 1;
+  color: rgba(37, 99, 235, .12);
+}
+.quote p { font-size: 1.02rem; line-height: 1.6; }
+.stars { color: #f59e0b; font-size: 1rem; }
+
+/* --- Media blok ---------------------------------------------------------- */
+.media__img { box-shadow: var(--shadow-lg); }
+.media__img img { transition: transform 600ms var(--ease); }
+.media__img:hover img { transform: scale(1.03); }
+
+/* --- Zaključni CTA ------------------------------------------------------- */
+#cta { background: linear-gradient(180deg, #eef3ff 0%, #e4ecff 100%); }
+#cta .section__head { max-width: 44rem; margin-inline: auto; text-align: center; }
+#cta .hero__actions { justify-content: center; margin-bottom: 0; }
+
+/* --- Podnožje ------------------------------------------------------------ */
+.site-footer { background: var(--grad-navy); }
+
+/* --- Unutrašnje stranice ------------------------------------------------- */
+.page-hero {
+  background:
+    radial-gradient(60rem 30rem at 80% -20%, rgba(56, 189, 248, .22), transparent 60%),
+    var(--grad-navy);
+}
+
+/* ==========================================================================
+   ŠIRINA I BOČNE IVICE
+   Sadržaj je bio uzak (1140px), pa su na velikim ekranima leva i desna
+   strana ostajale prazne. Rešenje u tri koraka:
+     1) širi kontejner,
+     2) fiksne bočne "šine" sa vertikalnim tekstom (samo >= 1400px),
+     3) meki gradijentni oblaci iza sekcija da bele margine ne deluju prazno.
+   ========================================================================== */
+
+:root { --maxw: 1280px; }
+
+/* --- 1) Hero koristi celu širinu ---------------------------------------- */
+@media (min-width: 1100px) {
+  .hero__grid { grid-template-columns: 1.05fr .95fr; gap: clamp(3rem, 6vw, 5.5rem); }
+  .hero__media { width: min(460px, 40vw); }
+}
+
+/* --- 2) Bočne šine ------------------------------------------------------
+   Vertikalni tekst uz same ivice prozora: levo šta radimo, desno telefon.
+   Prikazuju se tek kada zaista ima praznog prostora pored sadržaja.
+   ------------------------------------------------------------------------ */
+.edge-rail {
+  display: none;
+  position: fixed;
+  top: 50%;
+  z-index: 5;
+  transform: translateY(-50%);
+  align-items: center;
+  gap: 1.1rem;
+  font-family: var(--font-mono);
+  font-size: .72rem;
+  letter-spacing: .34em;
+  text-transform: uppercase;
+  color: var(--slate);
+  text-decoration: none;
+  pointer-events: none;
+  writing-mode: vertical-rl;
+}
+.edge-rail::before,
+.edge-rail::after {
+  content: "";
+  width: 1px;
+  height: 5rem;
+  background: linear-gradient(180deg, transparent, rgba(37, 99, 235, .45), transparent);
+}
+.edge-rail--left { left: 1.9rem; }
+.edge-rail--right { right: 1.9rem; transform: translateY(-50%) rotate(180deg); }
+.edge-rail--right {
+  pointer-events: auto;
+  color: var(--blue-dark);
+  transition: color var(--dur) var(--ease);
+}
+.edge-rail--right:hover { color: var(--blue); }
+
+@media (min-width: 1400px) { .edge-rail { display: flex; } }
+
+/* --- 3) Ambijent u praznim marginama ------------------------------------
+   Široki, jako blagi gradijentni oblaci koji "obuhvataju" sadržaj sa strane.
+   Ostaju iza svega (z-index: -1) i ne hvataju klikove.
+   ------------------------------------------------------------------------ */
+body { position: relative; overflow-x: hidden; }
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background:
+    radial-gradient(38rem 38rem at -8% 22%, rgba(37, 99, 235, .10), transparent 65%),
+    radial-gradient(34rem 34rem at 108% 62%, rgba(56, 189, 248, .12), transparent 65%),
+    radial-gradient(30rem 30rem at -6% 92%, rgba(56, 189, 248, .08), transparent 65%);
+}
+
+/* Sekcije sa svojom pozadinom moraju ostati neprozirne da oblaci
+   ne probijaju kroz njih. */
+.section--tint, .section--navy, .site-footer, .page-hero, #cta { position: relative; z-index: 0; }
+
+/* Bele sekcije puštaju ambijent, ali sadržaj ostaje čitak */
+.section:not(.section--tint):not(.section--navy) { position: relative; }
+
+/* Na uskim ekranima ambijent je slabiji da ne guši sadržaj */
+@media (max-width: 860px) {
+  body::before { opacity: .55; }
+}
+
+/* --- Sitno: mreža ponude bolje diše na širem kontejneru ----------------- */
+@media (min-width: 1200px) {
+  .grid-cards { gap: 1.3rem; }
+  .reasons, .quotes, .steps { gap: 1.4rem; }
+}
+
+/* ==========================================================================
+   PLAVI HEADER, CRVENO "XL" I MANJE BELINE
+   Traka za navigaciju je sada tamnoplava, logo ima crveno "XL", a sekcije
+   koje su bile čisto bele dobile su blagi plavi ton da stranica ne deluje
+   prazno. Kartice ostaju bele — tako se jasnije odvajaju od podloge.
+   ========================================================================== */
+
+:root {
+  --red: #ef4444;          /* akcenat u logotipu */
+  --red-dark: #dc2626;     /* isti akcenat na svetloj podlozi */
+  --grad-header: linear-gradient(100deg, #0b1b33 0%, #143563 55%, #0b1b33 100%);
+}
+
+/* --- Logo: crveno "XL" --------------------------------------------------- */
+.brand__x { color: var(--red); }
+.footer__brand .brand__x { color: var(--red); }
+
+/* --- Plava navigaciona traka -------------------------------------------- */
+.site-header {
+  background: var(--grad-header);
+  box-shadow: inset 0 -1px 0 rgba(255, 255, 255, .10);
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+}
+.site-header.is-scrolled {
+  background: var(--grad-header);
+  box-shadow: inset 0 -1px 0 rgba(255, 255, 255, .10), 0 14px 34px -20px rgba(11, 27, 51, .75);
+}
+/* Tanka svetlucava linija ispod trake — odvaja header od hero sekcije */
+.site-header::after {
+  content: "";
+  position: absolute;
+  left: 0; right: 0; bottom: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, rgba(56, 189, 248, .55), var(--red), transparent);
+  opacity: .75;
+}
+.header__inner { position: relative; }
+
+.brand, .brand:hover { color: var(--white); }
+
+.primary-nav a { color: #cddcf2; }
+.primary-nav a:hover { background: rgba(255, 255, 255, .10); color: var(--white); }
+.primary-nav a[aria-current="page"] {
+  color: var(--white);
+  background: rgba(255, 255, 255, .10);
+  box-shadow: inset 0 -2px 0 var(--red);
+}
+
+.header__phone { color: #cddcf2; }
+.header__phone:hover { color: var(--white); }
+
+/* Dugme "Pozovi" u plavoj traci — belo, da se vidi */
+.site-header .btn--primary { background: var(--white); color: var(--navy); box-shadow: 0 10px 24px -12px rgba(0, 0, 0, .8); }
+.site-header .btn--primary:hover { background: #eaf1ff; color: var(--navy); }
+
+/* Hamburger dugme */
+.nav-toggle { background: rgba(255, 255, 255, .08); border-color: rgba(255, 255, 255, .22); }
+.nav-toggle span, .nav-toggle span::before, .nav-toggle span::after { background: var(--white); }
+
+/* Mobilni meni prati boju trake */
+@media (max-width: 860px) {
+  .primary-nav {
+    background: var(--grad-header);
+    border-top: 1px solid rgba(255, 255, 255, .12);
+  }
+  .primary-nav a { border-bottom: 1px solid rgba(255, 255, 255, .10); }
+  .primary-nav a[aria-current="page"] { background: rgba(255, 255, 255, .10); box-shadow: inset 3px 0 0 var(--red); }
+  .primary-nav .mobile-call .btn--primary { background: var(--white); color: var(--navy); }
+}
+
+/* --- Manje beline: sekcije dobijaju plavi ton ---------------------------- */
+body { background: var(--bg); }
+
+/* Sekcije bez svoje pozadine više nisu bele */
+.section { background: transparent; }
+.section--tint { background: linear-gradient(180deg, #e9f0ff 0%, #dfe9ff 100%); }
+
+/* Hero kreće od svetloplave, ne od bele */
+.hero {
+  background:
+    radial-gradient(70rem 40rem at 78% -10%, rgba(56, 189, 248, .22), transparent 60%),
+    radial-gradient(55rem 34rem at 6% 8%, rgba(37, 99, 235, .16), transparent 62%),
+    linear-gradient(180deg, #eaf1ff 0%, #f4f8ff 100%);
+}
+
+/* Ambijent u marginama malo jači, sada kada je podloga tonirana */
+body::before {
+  background:
+    radial-gradient(38rem 38rem at -8% 22%, rgba(37, 99, 235, .16), transparent 65%),
+    radial-gradient(34rem 34rem at 108% 62%, rgba(56, 189, 248, .18), transparent 65%),
+    radial-gradient(30rem 30rem at -6% 92%, rgba(239, 68, 68, .07), transparent 65%);
+}
+
+#cta { background: linear-gradient(180deg, #e4ecff 0%, #d8e5ff 100%); }
+
+/* --- Crveni akcenti na još par mesta ------------------------------------ */
+/* Zvezdice u utiscima i navodnik */
+.stars { color: var(--red-dark); }
+.quote::before { color: rgba(239, 68, 68, .14); }
+
+/* Tačka u "eyebrow" oznaci naizmenično plavo/crveno deluje šareno,
+   pa je crvena rezervisana za sekcije na tamnoj podlozi. */
+.section--navy .eyebrow::before, .page-hero .eyebrow::before { background: var(--red); }
+
+/* Brojevi kartica ponude */
+.chip-card__num { color: rgba(220, 38, 38, .35); }
+
+/* Podvlaka ispod kartice: plavi gradijent koji se završava crvenim */
+.chip-card::after { background: linear-gradient(90deg, var(--blue) 0%, var(--sky) 60%, var(--red) 100%); }
+
+/* Bočna šina desno (telefon) — crvena, kao poziv na akciju */
+.edge-rail--right { color: var(--red-dark); }
+.edge-rail--right:hover { color: var(--red); }
+.edge-rail--right::before, .edge-rail--right::after {
+  background: linear-gradient(180deg, transparent, rgba(239, 68, 68, .5), transparent);
+}
+
+/* Podnožje: crvena linija iznad donjeg reda */
+.footer__bottom { border-top-color: rgba(239, 68, 68, .35); }
+
+/* ==========================================================================
+   ISPRAVKE: čitljivi brendovi, simetrična mreža, strelica "Usluge"
+   ========================================================================== */
+
+/* --- Brendovi: bele pločice sa tamnim tekstom ---------------------------
+   Ranije su bila svetla slova na poluprovidnoj svetloj pločici — slabo se
+   čitalo. Sada je pločica puna bela, tekst tamnoplav.
+   ------------------------------------------------------------------------ */
+.section--navy .brands li {
+  background: var(--white);
+  color: var(--navy);
+  border-color: transparent;
+  font-weight: 500;
+}
+.section--navy .brands li:hover {
+  background: var(--red);
+  border-color: transparent;
+  color: var(--white);
+  transform: translateY(-2px);
+}
+
+/* --- Simetrična mreža ponude -------------------------------------------
+   Šest kartica: 3 + 3 na desktopu, 2 + 2 + 2 na tabletu, po jedna na telefonu.
+   Nijedan red ne ostaje nepopunjen.
+   ------------------------------------------------------------------------ */
+@media (min-width: 940px) {
+  .grid-cards--3 { grid-template-columns: repeat(3, 1fr); }
+}
+
+/* --- Strelica "Usluge" na stranici Ponuda -------------------------------
+   Iskače pri učitavanju stranice, zatim lagano poskakuje da se primeti.
+   ------------------------------------------------------------------------ */
+.jump-arrow {
+  display: inline-flex;
+  align-items: center;
+  gap: .8rem;
+  margin-top: 2rem;
+  padding: .55rem .55rem .55rem 1.3rem;
+  border-radius: 999px;
+  background: var(--white);
+  color: var(--navy);
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1rem;
+  letter-spacing: -0.01em;
+  text-decoration: none;
+  box-shadow: 0 18px 34px -16px rgba(0, 0, 0, .8);
+  opacity: 0;
+  transform: translateY(-14px) scale(.92);
+  animation: jumpArrowIn 520ms var(--ease) .35s forwards;
+}
+.jump-arrow:hover { color: var(--navy); }
+.jump-arrow__ic {
+  display: grid;
+  place-items: center;
+  width: 40px; height: 40px;
+  border-radius: 50%;
+  background: var(--red);
+  color: var(--white);
+  animation: jumpArrowBob 1.8s ease-in-out 1.1s infinite;
+}
+.jump-arrow:hover .jump-arrow__ic { background: var(--red-dark); }
+/* Prsten koji pulsira oko strelice */
+.jump-arrow__ic::before {
+  content: "";
+  position: absolute;
+  width: 40px; height: 40px;
+  border-radius: 50%;
+  border: 2px solid var(--red);
+  animation: jumpArrowRing 1.8s ease-out 1.1s infinite;
+}
+.jump-arrow__ic { position: relative; }
+
+@keyframes jumpArrowIn { to { opacity: 1; transform: none; } }
+@keyframes jumpArrowBob {
+  0%, 100% { transform: translateY(0); }
+  50%      { transform: translateY(5px); }
+}
+@keyframes jumpArrowRing {
+  0%   { opacity: .7; transform: scale(1); }
+  70%  { opacity: 0;  transform: scale(1.7); }
+  100% { opacity: 0;  transform: scale(1.7); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .jump-arrow { opacity: 1 !important; transform: none !important; }
+  .jump-arrow__ic, .jump-arrow__ic::before { animation: none !important; }
+}
+
+/* Strelica "Usluge": plavi krug umesto crvenog */
+.jump-arrow__ic { background: var(--blue); }
+.jump-arrow:hover .jump-arrow__ic { background: var(--blue-dark); }
+.jump-arrow__ic::before { border-color: var(--sky); }
