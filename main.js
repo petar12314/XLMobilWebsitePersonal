@@ -151,7 +151,7 @@
       if (status) {
         status.textContent = "Hvala, " + name.trim().split(" ")[0] +
           "! Poruka je zabeležena — javićemo se na dati broj tokom radnog vremena. " +
-          "Za hitne stvari pozovite 065/6399-557.";
+          "Za hitne stvari pozovite 064/9090-004.";
         status.classList.add("is-ok");
         status.focus();
       }
