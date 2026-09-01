@@ -1402,3 +1402,35 @@ body::before {
 .jump-arrow__ic { background: var(--blue); }
 .jump-arrow:hover .jump-arrow__ic { background: var(--blue-dark); }
 .jump-arrow__ic::before { border-color: var(--sky); }
+
+/* ==========================================================================
+   DISANJE OKO NASLOVA SEKCIJA
+   Naslovi tipa "Sve za telefon na jednom mestu" su na uskim ekranima
+   dodirivali kartice ispod sebe, a repovi slova (j, g, p) su se seckali
+   zbog malog line-height-a i background-clip:text na gradijentu.
+   ========================================================================== */
+
+.section__head {
+  padding-block-end: .35rem;
+  padding-inline: clamp(0rem, 1vw, .5rem);
+}
+.section__head h2,
+.page-hero h1,
+.hero h1 {
+  line-height: 1.2;
+  padding-block-end: .12em;   /* prostor za repove slova kod clip-a teksta */
+  overflow-wrap: break-word;
+}
+.section__head .eyebrow { margin-bottom: 1.1rem; }
+.section__head h2 { margin-bottom: .75rem; }
+.section__head p { max-width: 46rem; }
+
+/* Naslovi u karticama takođe dobijaju malo vazduha */
+.chip-card h3,
+.reason h3,
+.step h3 { line-height: 1.3; padding-block-end: .08em; }
+
+@media (max-width: 640px) {
+  .section__head { margin-bottom: 2.25rem; }
+  .section__head h2 { line-height: 1.25; }
+}
